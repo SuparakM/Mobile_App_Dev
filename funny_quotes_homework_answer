@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
     'อยู่ด้วยกันจนถึงสิ้นปีเลยได้ไหม เงินอะ',
   ];
 
-  static const List<MaterialColor> _colorsList = [
+  static const List<Color> _colorsList = [
     Colors.red,
     Colors.green,
     Colors.deepPurple,
@@ -53,19 +53,17 @@ class _HomePageState extends State<HomePage> {
     var rand = Random();
 
     String newQuote;
+    Color newColor;
 
-    do {
+    while (true){
       var randomIndex = rand.nextInt(_quoteList.length);
       newQuote = _quoteList[randomIndex];
-    } while (newQuote == _quote);
-
-    MaterialColor newColor;
-
-    do {
       var randomIndex = rand.nextInt(_colorsList.length);
       newColor = _colorsList[randomIndex];
-    } while (newColor == _color);
-
+      if(newQuote != _quote && newColor != _color){
+        break;
+      }
+    }
     setState(() {
       _quote = newQuote;
       _color = newColor;
